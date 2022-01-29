@@ -1,0 +1,184 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/Bird.gd" type="Script" id=1]
+[ext_resource path="res://scenes/BirdBody.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Birdy_meshd.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Curve3D" id=9]
+_data = {
+"points": PoolVector3Array(  ),
+"tilts": PoolRealArray(  )
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_mode")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Bird:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 10, 0 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Bird:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bird/CollisionShape/birdy/AnimationPlayer:current_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ "idle" ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "race"
+length = 16.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 14 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_mode")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 14 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 3, 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 1.5, 1.6, 12.1, 12.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 180, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Bird/CollisionShape/birdy/AnimationPlayer:current_animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5, 12.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 2,
+"values": [ "jump", "fly", "jump" ]
+}
+
+[sub_resource type="CapsuleShape" id=2]
+radius = 0.34415
+height = 0.268265
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 10.5766, 5.98619, 2.73713 )
+
+[node name="Bird" type="Path"]
+curve = SubResource( 9 )
+script = ExtResource( 1 )
+
+[node name="PathFollow" type="PathFollow" parent="."]
+transform = Transform( 0.999994, 0, 0, 0, 0.999993, 0, 0, 0, 0.999993, 0.0094738, -0.0710678, 0.114138 )
+rotation_mode = 0
+
+[node name="Bird" type="KinematicBody" parent="PathFollow"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 10, 0 )
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow/Bird"]
+root_node = NodePath("../..")
+anims/RESET = SubResource( 5 )
+anims/idle = SubResource( 10 )
+anims/race = SubResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="PathFollow/Bird"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 2 )
+
+[node name="birdy" parent="PathFollow/Bird/CollisionShape" instance=ExtResource( 3 )]
+transform = Transform( 10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, 0, 2.23517e-08, 0.519278 )
+
+[node name="Area" type="Area" parent="PathFollow/Bird"]
+transform = Transform( 0.500003, 0, 0, 0, 4.63835, 0, 0, 0, 0.500004, -0.00473693, 0.0355342, -0.0570695 )
+
+[node name="CollisionShape" type="CollisionShape" parent="PathFollow/Bird/Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.17523 )
+shape = SubResource( 7 )
+
+[connection signal="body_entered" from="PathFollow/Bird/Area" to="." method="_on_Area_body_entered"]
+
+[editable path="PathFollow/Bird/CollisionShape/birdy"]
