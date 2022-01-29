@@ -1,0 +1,247 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/Bird.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/RottenCheese.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Portal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/RaceFinisher.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/game_over.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/main_env.tres" type="Environment" id=7]
+[ext_resource path="res://scenes/island.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/high_path.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Cheese.tscn" type="PackedScene" id=10]
+
+[sub_resource type="Curve3D" id=1]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -0.0188179, -0.0304089, 0.0406332, 0, 0, 0, 0, 0, 0, 0.403937, 5.95192, 13.772, 0, 0, 0, 0, 0, 0, 0.677167, 9.64939, 33.5903, 0, 0, 0, 0, 0, 0, 5.74897, 11.2709, 53.5986, 0, 0, 0, 0, 0, 0, 2.53928, 1.06582, 89.8304, 0, 0, 0, 0, 0, 0, 1.1813, -4.53477, 123.138, 0, 0, 0, 0, 0, 0, 1.03106, 3.48331, 165.383, 0, 0, 0, 0, 0, 0, 2.34104, 0.528038, 173.236 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 )
+}
+
+[node name="Race" type="Spatial"]
+
+[node name="Bird" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.08326, -4.65227 )
+curve = SubResource( 1 )
+
+[node name="PathFollow" parent="Bird" index="0"]
+transform = Transform( 0.999993, 0, 0, 0, 0.999992, 0, 0, 0, 0.999992, -0.0188179, -0.0304089, 0.0406332 )
+
+[node name="start" type="Spatial" parent="."]
+transform = Transform( 8.83473, 0, 0, 0, 0.115861, 0, 0, 0, 30.6852, 0, 0, 25.6074 )
+
+[node name="Portal" parent="start" instance=ExtResource( 4 )]
+transform = Transform( -0.11319, 0, -2.84902e-09, 0, 8.63101, 0, 9.89535e-09, 0, -0.032589, 0, 12.8947, -0.0874414 )
+destiny = "res://scenes/Central.tscn"
+description = "[center]Portal: Back to the Island"
+
+[node name="CollisionShape" parent="start/Portal/show_desc" index="0"]
+transform = Transform( 1, 0, -1.77636e-15, 0, 1, 0, 1.13687e-13, 0, 1, 1.62617e-07, 0, 1.72322 )
+
+[node name="island" parent="start" instance=ExtResource( 8 )]
+transform = Transform( 0.01, 0, 0, 0, 1, 0, 0, 0, 0.002, 0, 0, -0.236683 )
+
+[node name="high_path" parent="start" instance=ExtResource( 9 )]
+transform = Transform( 0.2, 0, 0, 0, 1, 0, 0, 0, 0.02, 0, 0, -0.886541 )
+
+[node name="high_path3" parent="start" instance=ExtResource( 9 )]
+transform = Transform( 0.2, 0, 0, 0, 1, 0, 0, 0, 0.02, 0, 0, -0.79837 )
+
+[node name="high_path4" parent="start" instance=ExtResource( 9 )]
+transform = Transform( 0.2, 0, 0, 0, 1, 0, 0, 0, 0.02, 0, 0, -0.711412 )
+
+[node name="high_path5" parent="start" instance=ExtResource( 9 )]
+transform = Transform( 0.2, 0, 0, 0, 1, 0, 0, 0, 0.02, 0, 0, -0.620566 )
+
+[node name="high_path2" parent="start" instance=ExtResource( 9 )]
+transform = Transform( 0.2, 0, 0, 0, 1, 0, 0, 0, 0.02, 0, 0, -0.980949 )
+
+[node name="end" type="Spatial" parent="."]
+transform = Transform( -9.41339, 0, -7.69211e-07, 0, 0.115861, 0, 1.9946e-06, 0, -21.3259, 0, 0.924635, -193.117 )
+
+[node name="Portal2" parent="end" instance=ExtResource( 4 )]
+transform = Transform( -0.0977018, 0, -3.95561e-10, 0, 10.3492, 0, 2.44994e-08, 0, -0.055079, -7.8024e-08, 16.4325, 0.954839 )
+destiny = "res://scenes/Central.tscn"
+description = "[center]Portal: Back to the Island"
+
+[node name="island" parent="end" instance=ExtResource( 8 )]
+transform = Transform( 0.0150035, 0, -2.76486e-10, 0, 1.69027, 0, -1.58231e-09, 0, 0.00638425, -6.00772e-08, 0, 0.498533 )
+
+[node name="high_path2" parent="end" instance=ExtResource( 9 )]
+transform = Transform( 0.2, 0, -4.44089e-16, 0, 1, 0, 0, 0, 0.02, -1.80945e-07, -33.9229, 1.23341 )
+
+[node name="high_path3" parent="end" instance=ExtResource( 9 )]
+transform = Transform( 0.2, 0, -4.44089e-16, 0, 1, 0, 0, 0, 0.02, -1.87316e-07, -33.9229, 1.31137 )
+
+[node name="high_path4" parent="end" instance=ExtResource( 9 )]
+transform = Transform( 0.2, 0, -4.44089e-16, 0, 1, 0, 0, 0, 0.02, -1.74037e-07, -33.9229, 1.14888 )
+
+[node name="high_path5" parent="end" instance=ExtResource( 9 )]
+transform = Transform( 0.2, 0, -4.44089e-16, 0, 1, 0, 0, 0, 0.02, 5.61135e-09, -33.9229, -1.04961 )
+
+[node name="high_path6" parent="end" instance=ExtResource( 9 )]
+transform = Transform( 0.2, 0, -4.44089e-16, 0, 1, 0, 0, 0, 0.02, 1.27863e-08, -33.9229, -1.13741 )
+
+[node name="high_path7" parent="end" instance=ExtResource( 9 )]
+transform = Transform( 0.2, 0, -4.44089e-16, 0, 1, 0, 0, 0, 0.02, 1.96709e-08, -33.9229, -1.22166 )
+
+[node name="high_path8" parent="end" instance=ExtResource( 9 )]
+transform = Transform( 0.2, 0, -4.44089e-16, 0, 1, 0, 0, 0, 0.02, 2.60353e-08, -33.9229, -1.29955 )
+
+[node name="high_path9" parent="end" instance=ExtResource( 9 )]
+transform = Transform( 0.2, 0, -4.44089e-16, 0, 1, 0, 0, 0, 0.02, -1.37254e-08, -4.95484, -0.812968 )
+
+[node name="high_path10" parent="end" instance=ExtResource( 9 )]
+transform = Transform( 0.2, 0, -4.44089e-16, 0, 1, 0, 0, 0, 0.02, -2.07227e-08, -4.95484, -0.727336 )
+
+[node name="high_path11" parent="end" instance=ExtResource( 9 )]
+transform = Transform( 0.2, 0, -4.44089e-16, 0, 1, 0, 0, 0, 0.02, -2.7767e-08, -4.95484, -0.641128 )
+
+[node name="high_path12" parent="end" instance=ExtResource( 9 )]
+transform = Transform( 0.2, 0, -4.44089e-16, 0, 1, 0, 0, 0, 0.02, -3.46041e-08, -4.95484, -0.557457 )
+
+[node name="high_path13" parent="end" instance=ExtResource( 9 )]
+transform = Transform( 0.2, 0, -4.44089e-16, 0, 1, 0, 0, 0, 0.02, -4.19823e-08, -4.95484, -0.467164 )
+
+[node name="RaceFinisher" parent="end" instance=ExtResource( 5 )]
+transform = Transform( 17.24, 0, 3.62057e-07, 0, 1629.15, 0, 1.11096e-06, 0, 2, 4.2945e-08, 304.278, -0.525546 )
+
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.9082, 0 )
+
+[node name="RottenCheese" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 6.83451, -9.95699, -3.3355 )
+can_jump = 15
+reload_time = 20
+
+[node name="RottenCheese28" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.115708, -9.95699, -3.3355 )
+can_jump = 15
+reload_time = 20
+
+[node name="RottenCheese29" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -6.60237, -9.95699, -16.7894 )
+can_jump = 15
+reload_time = 20
+
+[node name="RottenCheese8" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 6.83451, 18.1536, -47.9508 )
+can_jump = 20
+reload_time = 20
+
+[node name="RottenCheese9" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 5.34103, 12.3259, -58.672 )
+can_jump = 20
+
+[node name="RottenCheese2" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.64191, 8.25725, -36.6425 )
+can_jump = 20
+
+[node name="RottenCheese7" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 6.83451, 16.3085, -27.5766 )
+can_jump = 20
+
+[node name="RottenCheese3" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4.58052, -4.33814, -72.6339 )
+can_jump = 20
+
+[node name="RottenCheese4" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 16.8683, 5.77953, -74.8253 )
+can_jump = 20
+
+[node name="RottenCheese5" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.57161, 7.1079, -87.3423 )
+can_jump = 20
+
+[node name="RottenCheese6" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 12.4331, 6.46197, -105.259 )
+can_jump = 20
+
+[node name="RottenCheese10" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.80337, -9.95699, -1.39889 )
+can_jump = 15
+
+[node name="RottenCheese11" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.80337, 18.1536, -46.0142 )
+can_jump = 20
+
+[node name="RottenCheese12" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -6.29684, 12.3259, -56.7354 )
+can_jump = 20
+
+[node name="RottenCheese13" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -14.2798, 8.25725, -34.7059 )
+can_jump = 20
+
+[node name="RottenCheese14" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.80337, 16.3085, -25.64 )
+can_jump = 20
+
+[node name="RottenCheese15" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -7.05736, -4.33814, -70.6973 )
+can_jump = 20
+
+[node name="RottenCheese16" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 5.23041, 5.77953, -72.8887 )
+can_jump = 20
+
+[node name="RottenCheese17" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -17.2095, 7.1079, -85.4057 )
+can_jump = 20
+
+[node name="RottenCheese18" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.795263, 6.46197, -103.322 )
+can_jump = 20
+
+[node name="RottenCheese19" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( -0.0451598, -0.497956, 0, 0.491803, -0.0446018, 0.0783637, -0.0780435, 0.00707779, 0.493821, 15.4556, 11.4163, -69.1707 )
+can_jump = 15
+
+[node name="RottenCheese20" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( -0.0451598, -0.497956, 0, 0.491803, -0.0446018, 0.0783637, -0.0780435, 0.00707779, 0.493821, -12.5402, 1.91631, -112.837 )
+can_jump = 20
+
+[node name="RottenCheese21" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( -0.0451598, -0.497956, 0, 0.491803, -0.0446018, 0.0783637, -0.0780435, 0.00707779, 0.493821, -6.60134, -0.71312, -123.275 )
+can_jump = 20
+
+[node name="RottenCheese22" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( -0.0451598, -0.497956, 0, 0.491803, -0.0446018, 0.0783637, -0.0780435, 0.00707779, 0.493821, -1.82831, -4.74962, -100.329 )
+can_jump = 20
+
+[node name="RottenCheese23" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( -0.0451598, -0.497956, 0, 0.491803, -0.0446018, 0.0783637, -0.0780435, 0.00707779, 0.493821, -10.7026, 5.2741, -92.7404 )
+can_jump = 20
+
+[node name="RottenCheese24" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( -0.0451598, -0.497956, 0, 0.491803, -0.0446018, 0.0783637, -0.0780435, 0.00707779, 0.493821, 10.0633, -2.16289, -137.181 )
+can_jump = 20
+
+[node name="RottenCheese25" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( -0.0451598, -0.497956, 0, 0.491803, -0.0446018, 0.0783637, -0.0780435, 0.00707779, 0.493821, -1.12287, 8.67744, -141.12 )
+can_jump = 20
+
+[node name="RottenCheese26" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( -0.0451598, -0.497956, 0, 0.491803, -0.0446018, 0.0783637, -0.0780435, 0.00707779, 0.493821, -0.419053, -15.4748, -149.961 )
+can_jump = 20
+
+[node name="RottenCheese27" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( -0.0451598, -0.497956, 0, 0.491803, -0.0446018, 0.0783637, -0.0780435, 0.00707779, 0.493821, -1.40195, -0.515599, -170.476 )
+can_jump = 20
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.680125, 14.7893 )
+
+[node name="game_over" parent="." instance=ExtResource( 6 )]
+transform = Transform( 55.3201, 0, 0, 0, 36.1437, 0, 0, 0, 55.021, 0, -63.2396, -81.3854 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 7 )
+
+[node name="Cheese" parent="." instance=ExtResource( 10 )]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -2.72655, -218.854 )
+ch_name = "beyond the portal"
+
+[editable path="Bird"]
+[editable path="Bird/PathFollow/Bird/CollisionShape/birdy"]
+[editable path="start/Portal"]
+[editable path="game_over"]

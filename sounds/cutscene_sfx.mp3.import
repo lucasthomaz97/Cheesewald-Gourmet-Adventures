@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/cutscene_sfx.mp3-48daf5ee5b71fce63d4f62b19b8b2bb1.mp3str"
+
+[deps]
+
+source_file="res://sounds/cutscene_sfx.mp3"
+dest_files=[ "res://.import/cutscene_sfx.mp3-48daf5ee5b71fce63d4f62b19b8b2bb1.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Menu_button.gd" type="Script" id=1]
+[ext_resource path="res://misc/menu_theme.tres" type="Theme" id=2]
+
+[node name="Button" type="Button"]
+margin_top = 811.0
+margin_right = 452.0
+margin_bottom = 911.0
+rect_min_size = Vector2( 0, 100 )
+theme = ExtResource( 2 )
+text = "Play"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+go_to = "res://scenes/lvl.tscn"
+
+[connection signal="button_down" from="." to="." method="_on_Button_button_down"]

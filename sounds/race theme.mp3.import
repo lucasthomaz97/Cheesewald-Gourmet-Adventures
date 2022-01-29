@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/race theme.mp3-7ce533988b742ad52ef304a96cbc6fb3.mp3str"
+
+[deps]
+
+source_file="res://sounds/race theme.mp3"
+dest_files=[ "res://.import/race theme.mp3-7ce533988b742ad52ef304a96cbc6fb3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

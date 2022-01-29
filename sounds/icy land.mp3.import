@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/icy land.mp3-623a1946ed12153f3ba6e36dd1de4fa0.mp3str"
+
+[deps]
+
+source_file="res://sounds/icy land.mp3"
+dest_files=[ "res://.import/icy land.mp3-623a1946ed12153f3ba6e36dd1de4fa0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
